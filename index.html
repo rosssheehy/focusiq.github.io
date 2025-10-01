@@ -24,21 +24,29 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
   <link rel="manifest" href="/assets/icons/site.webmanifest">
 
-  <!-- Tailwind CDN (simple, no build step) -->
+  <!-- Tailwind CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
   <style>
-    /* tiny helpers */
+    /* Mobile drawer toggle */
     #mobile-menu { display: none; }
     #mobile-menu.active { display: block; }
+
+    /* Accessibility helper */
     .visually-hidden {
       position: absolute !important; width:1px; height:1px; padding:0; margin:-1px;
       overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
     }
+
+    /* Code block styling (from original) */
     .codebox {
-      background:#f4f4f4; padding:1rem; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background:#f4f4f4; padding:1rem;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       font-size:0.95rem; border-left:4px solid #3b82f6; overflow-x:auto; border-radius:.25rem;
     }
+
+    /* Prevent sticky-header overlap when clicking anchors */
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; } /* ~header height */
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -47,13 +55,13 @@
   <header class="sticky top-0 bg-white border-b z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3">
-        <img src="/assets/logos/logo10.png" alt="FocusIQ logo" class="h-10 w-10 rounded-xl" />
+        <img src="/assets/logos/logo10.png" alt="FocusIQ logo" class="h-14 md:h-16 w-auto object-contain" />
         <div>
           <div class="text-sm uppercase tracking-wider text-gray-500">FocusIQ</div>
           <div class="font-semibold -mt-1">Clear data, smart results</div>
         </div>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
+      <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Primary">
         <a href="#home" class="hover:text-blue-700">Home</a>
         <a href="#bio" class="hover:text-blue-700">Bio</a>
         <a href="#services" class="hover:text-blue-700">Services</a>
@@ -63,7 +71,7 @@
       </nav>
       <button id="hamburger" class="md:hidden border rounded p-2" aria-label="Toggle navigation">☰</button>
     </div>
-    <div id="mobile-menu" class="md:hidden border-t bg-white px-6 py-3 space-y-2">
+    <div id="mobile-menu" class="md:hidden border-t bg-white px-6 py-3 space-y-2" aria-label="Mobile">
       <a href="#home" class="block">Home</a>
       <a href="#bio" class="block">Bio</a>
       <a href="#services" class="block">Services</a>
@@ -90,12 +98,10 @@
       </div>
       <div class="rounded-3xl border p-6 bg-white">
         <ul class="space-y-2 text-sm">
-          <li>Organize messy datasets into usable, analysis-ready tables.</li>
-          <li>Spot patterns others miss and surface the “so what”.</li>
-          <li>Frame the right question before we touch the stats.</li>
-          <li>Clear, accessible visualizations for all audiences.</li>
-          <li>Plain-language summaries that support real decisions.</li>
-          <li>Flexible tiers: data checkup, standard consulting, consulting plus, retainers.</li>
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Eye-tracking, pupillometry, ECG, and behavioral datasets.</li>
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Rapid assessments of visual attention, working memory, acuity, scanning efficiency.</li>
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Clean visualizations and plain-language summaries for real decisions.</li>
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Flexible tiers: data checkup, standard consulting, scientific consulting, retainers.</li>
         </ul>
       </div>
     </div>
@@ -113,20 +119,20 @@
       set the question, shape the data, choose the right methods, and tell the story plainly.
     </p>
     <div class="mt-6 flex gap-3">
-      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/in/shannon-ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
-      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/company/focusiq-io/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
+      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
+      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
     </div>
   </section>
 
-  <!-- What I do (from original page) -->
-  <section class="max-w-5xl mx-auto px-6 py-12">
+  <!-- What I do -->
+  <section id="what-i-do" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">What I do</h2>
     <ul class="list-disc pl-6 space-y-2 mt-4 text-gray-700">
       <li>Visualize complex data to tell a clearer story</li>
       <li>Spot patterns others miss</li>
       <li>Help frame the right questions before diving into stats</li>
       <li>Make science-grade insights accessible to startups, researchers, and teams</li>
-      <li>Not sure how to start? I help clarify the question, then use your existing data — or help you find/collect new data — to uncover meaningful answers.</li>
+      <li>Not sure how to start? I clarify the question, then use your existing data — or help you find/collect new data — to uncover meaningful answers.</li>
     </ul>
   </section>
 
@@ -146,13 +152,14 @@
         <p class="mt-2 text-sm text-gray-700">Targeted analysis, visualization, dashboards, and decision support.</p>
       </div>
       <div class="border rounded p-5">
-        <h3 class="font-semibold">Consulting Plus — $300/hr</h3>
-        <p class="mt-2 text-sm text-gray-700">Deeper work on analytic strategy, data architecture, and decision pipelines.</p>
+        <h3 class="font-semibold">Scientific Consulting — $300/hr</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Advanced consulting for teams that need deeper work on measurement strategy and analytic approach — from choosing the right
+          behavioral metrics to planning analyses and translating findings into decisions your stakeholders understand.
+        </p>
       </div>
     </div>
     <p class="mt-4 text-sm text-gray-600">Rush projects from $325/hr • Retainers available • 10% discount for eligible nonprofits.</p>
-    <!-- Optional: link to a dedicated fees page if you keep one -->
-    <!-- <a class="inline-block mt-4 px-4 py-2 bg-blue-700 text-white rounded" href="/fees/">View full fee structure</a> -->
   </section>
 
   <!-- Insights -->
@@ -182,8 +189,8 @@
     </ul>
   </section>
 
-  <!-- Behind the name (from original page) -->
-  <section class="max-w-5xl mx-auto px-6 py-12">
+  <!-- Behind the name -->
+  <section id="behind-the-name" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">Behind the name</h2>
     <p class="mt-3 text-gray-700">
       FocusIQ isn’t just about answers — it’s about asking the right question. Relevance, clarity, and thoughtful analysis make insights useful.
@@ -215,15 +222,15 @@ if (data == messy):
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-gray-600">
       <div>© 2025 FocusIQ, LLC — Built with curiosity and code.</div>
       <div class="flex gap-4">
-        <a href="https://www.linkedin.com/in/shannon-ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
-        <a href="https://www.linkedin.com/company/focusiq-io/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
+        <a href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
+        <a href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
         <a href="mailto:shannon@focusiq.io">shannon@focusiq.io</a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('mobile-menu').classList.toggle('active');
     });
   </script>
