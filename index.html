@@ -143,39 +143,42 @@
   <section id="services" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">Fees & Services</h2>
     <p class="mt-3 text-gray-700">
-      I offer flexible structures depending on your needs — from one‑time deep dives to ongoing monthly support.
+      I offer flexible structures depending on your needs — from one-time deep dives to ongoing monthly support.
     </p>
 
     <!-- One-time Services -->
-    <h3 class="mt-8 text-2xl font-semibold">One‑Time Services</h3>
-    <div class="mt-4 grid md:grid-cols-3 gap-5">
-      <div class="border rounded p-5">
+    <h3 class="mt-8 text-lg font-semibold italic md:ml-6">One-Time Services</h3>
+    
+    <p class="mt-2 text-gray-700 md:ml-6">Focused engagements for specific questions, analyses, or deliverables. Great for projects with clear scope and defined outcomes.</p>
+    <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Data Checkup — $200</h4>
         <p class="mt-2 text-sm text-gray-700">A structured first pass to clean and explore your data; flags issues, quick wins, and next steps.</p>
       </div>
-      <div class="border rounded p-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Standard Consulting — $250/hr</h4>
-        <p class="mt-2 text-sm text-gray-700">Targeted analysis and visualization that simplify complex data and provide clear, actionable decision support.</p>
+      <p class="mt-2 text-gray-700 md:ml-6">Targeted analysis and visualization that simplify complex data and provide clear, actionable decision support.</p>
       </div>
-      <div class="border rounded p-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Scientific Consulting — $300/hr</h4>
         <p class="mt-2 text-sm text-gray-700">Advanced consulting on measurement strategy and analytic design to improve data collection and ensure meaningful results.</p>
       </div>
     </div>
 
     <!-- Ongoing Services -->
-    <h3 class="mt-10 text-2xl font-semibold">Ongoing Services</h3>
-    <p class="mt-2 text-gray-700">Consistent support for teams that want ongoing analysis, quick turn feedback, and a thinking partner on call. Preferred rates, billed monthly.</p>
-    <div class="mt-4 grid md:grid-cols-3 gap-5">
-      <div class="border rounded p-5">
+    <h3 class="mt-10 text-lg font-semibold italic md:ml-6">Ongoing Services</h3>
+    
+    <p class="mt-2 text-gray-700 md:ml-6">Consistent support for teams that want ongoing analysis, quick turn feedback, and a thinking partner on call. Preferred rates, billed monthly.</p>
+    <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Starter Retainer</h4>
-        <p class="mt-2 text-sm text-gray-700">~10 hours/month · Back‑pocket support for routine questions, light analysis, and data checks.</p>
+        <p class="mt-2 text-sm text-gray-700">~10 hours/month · Back-pocket support for routine questions, light analysis, and data checks.</p>
       </div>
-      <div class="border rounded p-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Standard Retainer</h4>
         <p class="mt-2 text-sm text-gray-700">~20 hours/month · Ongoing analyses, reporting cycles, and regular touchpoints.</p>
       </div>
-      <div class="border rounded p-5">
+      <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Plus Retainer</h4>
         <p class="mt-2 text-sm text-gray-700">~40 hours/month · Deeper support across projects: analytics, visualization, and strategy.</p>
       </div>
@@ -221,7 +224,7 @@
     </p>
     <div class="codebox mt-4" aria-label="Fun code snippet">
     <!--<div class="codebox mt-4 border-focus-green" aria-label="Fun code snippet">-->
-<pre><code># Behind the name:
+<pre><code># Fun fact
 if is_murky(data):
     insights = FocusIQ(data)
     print("From murky to meaningful → FocusIQ")</code></pre>
@@ -261,7 +264,7 @@ if is_murky(data):
     document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('mobile-menu').classList.toggle('active');
     });
-    </script>
+      </script>
   <script>
     // Handle Formspree submit and force redirect to custom thank-you page
     (function(){
@@ -279,7 +282,6 @@ if is_murky(data):
           if (res.ok) {
             window.location.href = '/thank-you.html';
           } else {
-            // Fallback to Formspree default thank-you if something goes wrong
             window.location.href = 'https://formspree.io/thanks';
           }
         } catch(err) {
@@ -288,5 +290,6 @@ if is_murky(data):
       });
     })();
   </script>
+  
 </body>
 </html>
