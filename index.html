@@ -46,7 +46,7 @@
     }
 
     /* Prevent sticky-header overlap when clicking anchors */
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; } /* ~header height */
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -98,9 +98,11 @@
       </div>
       <div class="rounded-3xl border p-6 bg-white">
         <ul class="space-y-2 text-sm">
-          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Eye-tracking, pupillometry, ECG, and behavioral datasets.</li>
-          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Rapid assessments of visual attention, working memory, acuity, scanning efficiency.</li>
-          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Clean visualizations and plain-language summaries for real decisions.</li>
+          <!-- UPDATED: replace two sciency bullets with FocusIQ consulting bullets -->
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Clean, wrangle, and organize data (Excel, R, Python, SPSS, etc.)</li>
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Analyze, model, and apply AI/machine learning.</li>
+          <!-- Keep the remaining original outcome bullets -->
+          <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Visualize results with charts and reports that actually make sense </li>
           <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Flexible tiers: data checkup, standard consulting, scientific consulting, retainers.</li>
         </ul>
       </div>
@@ -149,31 +151,30 @@
       </div>
       <div class="border rounded p-5">
         <h3 class="font-semibold">Standard Consulting — $250/hr</h3>
-        <p class="mt-2 text-sm text-gray-700">Targeted analysis, visualization, dashboards, and decision support.</p>
+        <p class="mt-2 text-sm text-gray-700">Targeted analysis and visualization that simplify complex data and provide clear, actionable decision support.</p>
       </div>
       <div class="border rounded p-5">
         <h3 class="font-semibold">Scientific Consulting — $300/hr</h3>
         <p class="mt-2 text-sm text-gray-700">
-          Advanced consulting for teams that need deeper work on measurement strategy and analytic approach — from choosing the right
-          behavioral metrics to planning analyses and translating findings into decisions your stakeholders understand.
+          Advanced consulting on measurement strategy and analytic design to improve data collection and ensure meaningful results.
         </p>
       </div>
     </div>
     <p class="mt-4 text-sm text-gray-600">Rush projects from $325/hr • Retainers available • 10% discount for eligible nonprofits.</p>
   </section>
 
-  <!-- Insights -->
+  <!-- Insights from Cognitive Science -->
   <section id="insights" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">Insights</h2>
     <p class="mt-4 text-gray-700">Short essays and explainers connecting data analysis and practical decision-making — the professor’s corner, but practical.</p>
     <div class="mt-6 grid md:grid-cols-2 gap-6">
       <div class="border rounded p-5">
-        <h3 class="font-semibold">Making messy data analysis-ready</h3>
-        <p class="text-sm mt-2 text-gray-700">Tips for structuring spreadsheets so analysis is faster and less error-prone.</p>
+        <h3 class="font-semibold">The Spotlight of Visual Attention</h3>
+        <p class="text-sm mt-2 text-gray-700">We can only process a narrow slice of what’s in front of us, while everything outside that focus fades into the background. In data visualization, this means what you emphasize becomes the story your audience remembers. Placement, contrast, and hierarchy guide the eye, while clutter dilutes the message and drains attention. Effective design isn’t about displaying everything at once—it’s about steering focus toward the points that matter most.</p>
       </div>
       <div class="border rounded p-5">
-        <h3 class="font-semibold">Attention as a limited resource</h3>
-        <p class="text-sm mt-2 text-gray-700">What cognitive psychology tells us about designing dashboards people actually use.</p>
+        <h3 class="font-semibold">The Limits of Working Memory</h3>
+        <p class="text-sm mt-2 text-gray-700">People can only juggle a few chunks of information at once — usually around 3–5 meaningful units. This well-known bottleneck (from Miller’s Law and later refinements) has big implications for data work. If you present too many numbers or categories at once, you overload your audience and reduce clarity. Good analysis isn’t just about accuracy; it’s about structuring information so the brain can hold onto it long enough to compare, reason, and decide.</p>
       </div>
     </div>
   </section>
@@ -182,10 +183,12 @@
   <section id="resources" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">Resources</h2>
     <ul class="list-disc pl-6 space-y-2 mt-4 text-sm">
-      <li>Checklist: Getting your data ready for analysis (CSV formatting, IDs, codebooks).</li>
-      <li>Guide: Picking the right chart for your question.</li>
-      <li>Template: One-page findings brief your board will actually read.</li>
-      <li>Workshop slides: growth curves, attention, and better figures.</li>
+      <li><a href="/assets/resources/data_readiness_checklist.pdf" class="text-blue-700 hover:underline">Data Readiness Checklist (PDF)</a></li>
+      <li><a href="/assets/resources/findings_brief_template.docx" class="text-blue-700 hover:underline">Findings Brief Template (DOCX)</a></li>
+      <li><a href="https://datavizcatalogue.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">The Data Visualization Catalogue</a></li>
+      <li><a href="https://flowingdata.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">FlowingData</a></li>
+      <li><a href="https://www.datavisualizationsociety.org/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">Data Visualization Society</a></li>
+      <li><a href="https://projects.iq.harvard.edu/dataviz" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">Harvard Data Visualization Resources</a></li>
     </ul>
   </section>
 
@@ -230,6 +233,7 @@ if (data == messy):
   </footer>
 
   <script>
+    // Mobile menu
     document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('mobile-menu').classList.toggle('active');
     });
