@@ -234,7 +234,7 @@ if is_murky(data):
     <p class="mt-4 text-gray-700">
       Whether you’re leading a classroom, a firm, a lab, or a company — or just curious what your data can teach you — let’s talk.
     </p>
-    <form action="https://formspree.io/f/mpwyrwvz" method="POST" class="mt-6 grid gap-4 max-w-xl">
+    <form id="contactForm" action="https://formspree.io/f/mpwyrwvz" method="POST" class="mt-6 grid gap-4 max-w-xl">
       <input type="hidden" name="subject" value="New Service Request">
       <input type="hidden" name="_redirect" value="https://focusiq.io/thank-you.html">
       <input class="border rounded px-4 py-2" placeholder="Name" name="name" required />
@@ -261,6 +261,32 @@ if is_murky(data):
     document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('mobile-menu').classList.toggle('active');
     });
+    </script>
+  <script>
+    // Handle Formspree submit and force redirect to custom thank-you page
+    (function(){
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            window.location.href = '/thank-you.html';
+          } else {
+            // Fallback to Formspree default thank-you if something goes wrong
+            window.location.href = 'https://formspree.io/thanks';
+          }
+        } catch(err) {
+          window.location.href = 'https://formspree.io/thanks';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
