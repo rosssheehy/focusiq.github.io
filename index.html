@@ -47,7 +47,14 @@
 
     /* Prevent sticky-header overlap when clicking anchors */
     html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-  </style>
+  :root {
+      --focus-green: #bbd979
+; /* Adjust to match logo green */
+    }
+    .text-focus-green { color: var(--focus-green); }
+    .bg-focus-green { background-color: var(--focus-green); }
+    .border-focus-green { border-color: var(--focus-green); }
+</style>
 </head>
 <body class="bg-white text-gray-900">
 
@@ -55,11 +62,7 @@
   <header class="sticky top-0 bg-white border-b z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3">
-        <img src="/assets/logos/logo10.png" alt="FocusIQ logo" class="h-14 md:h-16 w-auto object-contain" />
-        <div>
-          <div class="text-sm uppercase tracking-wider text-gray-500">FocusIQ</div>
-          <div class="font-semibold -mt-1">Clear data, smart results</div>
-        </div>
+        <img src="/assets/logos/logo10.png" alt="FocusIQ logo" class="h-20 md:h-24 w-auto object-contain" />
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Primary">
         <a href="#home" class="hover:text-blue-700">Home</a>
@@ -98,10 +101,8 @@
       </div>
       <div class="rounded-3xl border p-6 bg-white">
         <ul class="space-y-2 text-sm">
-          <!-- UPDATED: replace two sciency bullets with FocusIQ consulting bullets -->
           <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Clean, wrangle, and organize data (Excel, R, Python, SPSS, etc.)</li>
           <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Analyze, model, and apply AI/machine learning.</li>
-          <!-- Keep the remaining original outcome bullets -->
           <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Visualize results with charts and reports that actually make sense </li>
           <li class="flex"><span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span> Flexible tiers: data checkup, standard consulting, scientific consulting, retainers.</li>
         </ul>
@@ -165,7 +166,7 @@
 
   <!-- Insights from Cognitive Science -->
   <section id="insights" class="max-w-5xl mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold">Insights</h2>
+    <h2 class="text-3xl font-bold">Insights from Cognitive Science</h2>
     <p class="mt-4 text-gray-700">Short essays and explainers connecting data analysis and practical decision-making — the professor’s corner, but practical.</p>
     <div class="mt-6 grid md:grid-cols-2 gap-6">
       <div class="border rounded p-5">
@@ -184,7 +185,7 @@
     <h2 class="text-3xl font-bold">Resources</h2>
     <ul class="list-disc pl-6 space-y-2 mt-4 text-sm">
       <li><a href="/assets/resources/data_readiness_checklist.pdf" class="text-blue-700 hover:underline">Data Readiness Checklist (PDF)</a></li>
-      <li><a href="/assets/resources/findings_brief_template.docx" class="text-blue-700 hover:underline">Findings Brief Template (DOCX)</a></li>
+      <li><a href="/assets/resources/findings_brief_template.pdf" class="text-blue-700 hover:underline">Findings Brief Template (PDF)</a></li>
       <li><a href="https://datavizcatalogue.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">The Data Visualization Catalogue</a></li>
       <li><a href="https://flowingdata.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">FlowingData</a></li>
       <li><a href="https://www.datavisualizationsociety.org/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">Data Visualization Society</a></li>
@@ -198,11 +199,12 @@
     <p class="mt-3 text-gray-700">
       FocusIQ isn’t just about answers — it’s about asking the right question. Relevance, clarity, and thoughtful analysis make insights useful.
     </p>
-    <div class="codebox mt-4" aria-label="Fun code snippet">
-<pre><code># Fun fact:
-if (data == messy):
-    question = refine()
-    insights = extract(data)</code></pre>
+    <!<div class="codebox mt-4" aria-label="Fun code snippet">-->
+    <div class="codebox mt-4 border-focus-green" aria-label="Fun code snippet">
+<pre><code># Behind the name:
+if is_murky(data):
+    insights = FocusIQ(data)
+    print("From murky to meaningful → FocusIQ")</code></pre>
     </div>
   </section>
 
