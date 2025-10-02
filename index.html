@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    FocusIQ – Lean, accessible, and fast
+    - Tailwind via CDN (v2.x)
+    - Minimal custom CSS for brand accents, code box, and smooth scrolling.
+    - Social cards set for rich link previews.
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusIQ</title>
+  <meta name="description" content="Turning messy data into clear, actionable insights. Data consulting, analysis, and visualization by Shannon Ross-Sheehy, PhD." />
+
+  <!-- Open Graph (Link Previews) -->
+  <meta property="og:title" content="FocusIQ" />
+  <meta property="og:description" content="Data help for curious people solving interesting problems." />
+  <meta property="og:image" content="https://focusiq.io/assets/logos/social-preview.png" />
+  <meta property="og:url" content="https://focusiq.io/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FocusIQ" />
+  <meta name="twitter:description" content="Data help for curious people solving interesting problems." />
+  <meta name="twitter:image" content="https://focusiq.io/assets/logos/social-preview.png" />
+
+  <!-- Icons / Manifest -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/site.webmanifest">
+
+  <!-- Tailwind (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+  <style>
+    /* --- Accessibility helpers --- */
+    .visually-hidden{
+      position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+    }
+
+    /* --- Mobile drawer toggle (hidden by default; .active reveals) --- */
+    #mobile-menu{ display:none; }
+    #mobile-menu.active{ display:block; }
+
+    /* --- Branded accents --- */
+    :root { --focus-green:#bbd979; }
+    .text-focus-green{ color:var(--focus-green); }
+    .bg-focus-green{ background-color:var(--focus-green); }
+    .border-focus-green{ border-color:var(--focus-green); }
+    .bg-faint-blue{ background-color:#f0f8ff; }   /* One-time boxes */
+    .bg-faint-green{ background-color:#f6fff0; }  /* Ongoing boxes */
+
+    /* --- Code block styling --- */
+    .codebox{
+      background:#f4f4f4; padding:1rem; border-radius:.25rem; border-left:4px solid #3b82f6;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:0.95rem; overflow-x:auto;
+    }
+
+    /* --- Smooth scroll with sticky-header offset (respects reduced motion) --- */
+    :root{ scroll-behavior:smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      :root{ scroll-behavior:auto; }
+    }
+    html{ scroll-padding-top:84px; } /* matches sticky header height */
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+  <!-- ===== Header & Navigation ===== -->
+  <header class="sticky top-0 bg-white border-b z-50" role="banner">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="/" class="flex items-center gap-3" aria-label="FocusIQ home">
+        <img src="/assets/logos/logo10.png" alt="FocusIQ logo" class="h-20 md:h-24 w-auto object-contain" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Primary">
+        <a href="#home" class="hover:text-blue-700">Home</a>
+        <a href="#bio" class="hover:text-blue-700">Bio</a>
+        <a href="#services" class="hover:text-blue-700">Services</a>
+        <a href="#insights" class="hover:text-blue-700">Insights</a>
+        <a href="#resources" class="hover:text-blue-700">Resources</a>
+        <a href="#contact" class="hover:text-blue-700">Contact</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="hamburger"
+              class="md:hidden border rounded p-2"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              title="Menu">
+        <!-- Inline SVG for better control/contrast; aria-hidden because button has label -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav (appears under header) -->
+    <div id="mobile-menu"
+         class="md:hidden absolute left-0 right-0 top-full bg-white border-t px-6 py-3 space-y-3 shadow-lg max-h-[70vh] overflow-auto z-40"
+         aria-label="Mobile navigation">
+      <!-- Each link closes the drawer on tap -->
+      <a href="#home" class="block py-1 mobile-link">Home</a>
+      <a href="#bio" class="block py-1 mobile-link">Bio</a>
+      <a href="#services" class="block py-1 mobile-link">Services</a>
+      <a href="#insights" class="block py-1 mobile-link">Insights</a>
+      <a href="#resources" class="block py-1 mobile-link">Resources</a>
+      <a href="#contact" class="block py-1 mobile-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ===== Main content ===== -->
+  <main id="home" class="bg-gray-50 border-b scroll-mt-24" role="main">
+    <!-- Visually hidden h1 supports SEO & screen readers -->
+    <h1 class="visually-hidden">FocusIQ — Data help for curious people solving interesting problems.</h1>
+
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-4xl font-extrabold">Turning messy data into clear, impactful stories.</h2>
+        <p class="mt-4 text-gray-700">
+          I’m Shannon Ross-Sheehy, PhD — cognitive scientist, professor, and data consultant.
+          I help teams turn noisy, real-world data into answers you can act on, pairing clean analysis with visuals that make the point fast.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="px-4 py-2 bg-blue-700 text-white rounded">Start a project</a>
+          <a href="#services" class="px-4 py-2 border rounded">See services</a>
+        </div>
+      </div>
+
+      <!-- Quick capabilities card -->
+      <div class="rounded-3xl border p-6 bg-white">
+        <ul class="space-y-2 text-sm">
+          <li class="flex">
+            <span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span>
+            Clean, wrangle, and organize data (Excel, R, Python, SPSS, etc.)
+          </li>
+          <li class="flex">
+            <span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span>
+            Analyze, model, and apply AI/machine learning
+          </li>
+          <li class="flex">
+            <span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span>
+            Visualize results with charts and reports that actually make sense
+          </li>
+          <li class="flex">
+            <span class="mt-1 mr-2 h-2 w-2 rounded-full bg-blue-700"></span>
+            Flexible tiers: data checkup, standard consulting, scientific consulting, retainers
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Bio ===== -->
+  <section id="bio" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Bio</h2>
+    <p class="mt-4 text-gray-700">
+      I work with nonprofits, researchers, and mission-driven teams to organize messy datasets, create reproducible analyses,
+      and build clear visuals so you can see what matters. The process is practical and collaborative — no jargon, just useful insight.
+    </p>
+    <p class="mt-4 text-gray-700">
+      I’m also an Associate Professor of Psychology & Neuroscience. That teaching mindset carries into client work:
+      set the question, shape the data, choose the right methods, and tell the story plainly.
+    </p>
+    <div class="mt-6 flex gap-3 flex-wrap">
+      <!-- LinkedIn buttons with inline icons (aria-hidden; links have clear text) -->
+      <a class="px-4 py-2 border rounded inline-flex items-center gap-2" href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4">
+          <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/>
+        </svg>
+        LinkedIn (Shannon)
+      </a>
+      <a class="px-4 py-2 border rounded inline-flex items-center gap-2" href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4">
+          <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/>
+        </svg>
+        LinkedIn (FocusIQ)
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== What I do ===== -->
+  <section id="what-i-do" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">What I do</h2>
+    <ul class="list-disc pl-6 space-y-2 mt-4 text-gray-700">
+      <li>Visualize complex data to tell a clearer story</li>
+      <li>Spot patterns others miss</li>
+      <li>Frame the right questions before diving into stats</li>
+      <li>Make science-grade insights accessible to startups, researchers, and teams</li>
+      <li>Clarify the question, then use your data — or help you gather new data — to uncover meaningful answers</li>
+    </ul>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section id="services" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Fees & Services</h2>
+    <p class="mt-3 text-gray-700">
+      Flexible structures — from one-time deep dives to ongoing monthly support.
+    </p>
+
+    <!-- One-time Services -->
+    <h3 class="mt-8 text-lg font-semibold italic md:ml-6">One-Time Services</h3>
+    <p class="mt-2 text-gray-700 md:ml-6">
+      Focused engagements for specific questions, analyses, or deliverables. Ideal when scope and outcomes are clear.
+    </p>
+
+    <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
+      <div class="border rounded p-5 shadow-sm bg-faint-blue">
+        <h4 class="font-semibold">Data Checkup — $200/hr</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          A structured first pass to clean and explore your data; flags issues, looks for quick wins, and recommends next steps.
+        </p>
+      </div>
+      <div class="border rounded p-5 shadow-sm bg-faint-blue">
+        <h4 class="font-semibold">Standard Consulting — $250/hr</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          Targeted analysis and visualization designed to reveal meaningful patterns and support confident, evidence-based choices.
+        </p>
+      </div>
+      <div class="border rounded p-5 shadow-sm bg-faint-blue">
+        <h4 class="font-semibold">Scientific Consulting — $300/hr</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          From the research question forward — align methods, measures, and analysis to generate data that truly answer what you need to know.
+        </p>
+      </div>
+    </div>
+    <p class="mt-2 text-gray-700 italic md:ml-6">*Rush projects from $325/hr • Nonprofit discounts available.</p>
+
+    <!-- Ongoing Services -->
+    <h3 class="mt-10 text-lg font-semibold italic md:ml-6">Ongoing Services</h3>
+    <p class="mt-2 text-gray-700 md:ml-6">
+      Consistent support for teams that want ongoing analysis, quick-turn feedback, and a dedicated partner on call. Preferred rates.
+    </p>
+
+    <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
+      <div class="border rounded p-5 shadow-sm bg-faint-green">
+        <h4 class="font-semibold">Starter Retainer — $2,250/mo</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          Up to ~8 hrs/mo · Best for light, ongoing support: routine questions, small analyses, and regular data checkups.
+        </p>
+      </div>
+      <div class="border rounded p-5 shadow-sm bg-faint-green">
+        <h4 class="font-semibold">Standard Retainer — $4,400/mo</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          Up to ~20 hrs/mo · Recurring analyses, scheduled reporting cycles, and strategy touchpoints to inform decisions.
+        </p>
+      </div>
+      <div class="border rounded p-5 shadow-sm bg-faint-green">
+        <h4 class="font-semibold">Plus Retainer — $8,400/mo</h4>
+        <p class="mt-2 text-sm text-gray-700">
+          Up to ~40 hrs/mo · Deeper support across projects: analysis, visualization, and planning. A true embedded partner.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-2 text-gray-700 italic md:ml-6">*Retainers billed monthly.</p>
+  </section>
+
+  <!-- ===== Insights ===== -->
+  <section id="insights" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Insights from the Lab</h2>
+    <p class="mt-4 text-gray-700">
+      Short explainers showing how findings from our lab and others can guide the way we present information — so analyses and visuals maximize clarity and impact.
+    </p>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="border rounded p-5 bg-gray-50 italic shadow-sm">
+        <h3 class="font-semibold not-italic">The Spotlight of Visual Attention</h3>
+        <p class="text-sm mt-2 text-gray-700">
+          We can process only a narrow slice of what’s in view; everything outside that focus fades. In data visualization, emphasis becomes the story your audience remembers. Well-chosen visuals guide the eye; clutter muddies the message. Good design steers attention to what matters most.
+        </p>
+      </div>
+
+      <div class="border rounded p-5 bg-gray-50 italic shadow-sm">
+        <h3 class="font-semibold not-italic">The Limits of Working Memory</h3>
+        <p class="text-sm mt-2 text-gray-700">
+          People juggle about 3–5 meaningful units at once. Present too many ideas and important details get lost. Good analysis isn’t only about accuracy; it’s about structuring information so the brain can hold it long enough to compare, reason, and decide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Resources ===== -->
+  <section id="resources" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Resources</h2>
+    <ul class="list-disc pl-6 space-y-2 mt-4 text-sm">
+      <li><a href="/assets/resources/data_readiness_checklist.pdf" class="text-blue-700 hover:underline">Data Readiness Checklist (PDF)</a></li>
+      <li><a href="/assets/resources/findings_brief_template.pdf" class="text-blue-700 hover:underline">Findings Brief Template (PDF)</a></li>
+      <li><a href="https://datavizcatalogue.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">The Data Visualization Catalogue</a></li>
+      <li><a href="https://flowingdata.com/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">FlowingData</a></li>
+      <li><a href="https://www.datavisualizationsociety.org/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">Data Visualization Society</a></li>
+      <li><a href="https://policyviz.com/resources/" target="_blank" rel="noreferrer" class="text-blue-700 hover:underline">PolicyViz Resources</a></li>
+    </ul>
+  </section>
+
+  <!-- ===== Behind the name ===== -->
+  <section id="behind-the-name" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Behind the name</h2>
+    <p class="mt-3 text-gray-700">
+      FocusIQ isn’t just about answers — it’s about asking the right questions so your data works harder for you.
+    </p>
+    <div class="codebox mt-4" aria-label="Fun code snippet">
+<pre><code># Fun fact
+if is_murky(data):
+    insights = FocusIQ(data)
+    print("From murky to meaningful → FocusIQ")</code></pre>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="max-w-5xl mx-auto px-6 py-12 scroll-mt-24">
+    <h2 class="text-3xl font-bold">Ready for help?</h2>
+    <p class="mt-4 text-gray-700">
+      Whether you’re leading a classroom, a firm, a lab, or a company — or just curious what your data can teach you — let’s talk.
+    </p>
+
+    <!--
+      Progressive enhancement:
+      - Without JS: Formspree handles submission and its default thank-you page.
+      - With JS below: Intercept POST and redirect to /thank-you.html on success.
+    -->
+    <form id="contactForm" action="https://formspree.io/f/mpwyrwvz" method="POST" class="mt-6 grid gap-4 max-w-xl">
+      <input type="hidden" name="subject" value="New Service Request">
+      <input type="hidden" name="_redirect" value="https://focusiq.io/thank-you.html">
+      <input class="border rounded px-4 py-2" placeholder="Name" name="name" required />
+      <input class="border rounded px-4 py-2" placeholder="Email" type="email" name="email" required />
+      <textarea class="border rounded px-4 py-2" placeholder="Project idea" rows="5" name="message" required></textarea>
+      <button type="submit" class="px-4 py-2 bg-blue-700 text-white rounded">Send</button>
+    </form>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t mt-16" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-gray-600">
+      <div>© 2025 FocusIQ, LLC — Built with curiosity and code.</div>
+      <div class="flex gap-6 items-center">
+        <a href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4">
+            <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/>
+          </svg>
+          LinkedIn (Shannon)
+        </a>
+        <a href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4">
+            <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/>
+          </svg>
+          LinkedIn (FocusIQ)
+        </a>
+        <a href="mailto:shannon@focusiq.io" class="hover:text-blue-700">shannon@focusiq.io</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Mobile menu: toggle visibility, keep aria-expanded in sync, and close on link tap.
+    (function(){
+      const btn  = document.getElementById('hamburger');
+      const menu = document.getElementById('mobile-menu');
+      const links = menu.querySelectorAll('.mobile-link');
+
+      function toggle(){
+        const isActive = menu.classList.toggle('active');
+        btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', toggle);
+
+      links.forEach(a => {
+        a.addEventListener('click', () => {
+          if (menu.classList.contains('active')) toggle();
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Formspree: intercept to redirect to custom thank-you page on success.
+    // If JS fails, the form still posts server-side and shows Formspree's default page.
+    (function(){
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            window.location.href = '/thank-you.html';
+          } else {
+            // Fallback to Formspree's generic thanks page if something non-OK happens
+            window.location.href = 'https://formspree.io/thanks';
+          }
+        } catch(err) {
+          window.location.href = 'https://formspree.io/thanks';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
