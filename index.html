@@ -47,14 +47,11 @@
 
     /* Prevent sticky-header overlap when clicking anchors */
     html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-  :root {
-      --focus-green: #bbd979
-; /* Adjust to match logo green */
-    }
+    :root { --focus-green: #bbd979; }
     .text-focus-green { color: var(--focus-green); }
     .bg-focus-green { background-color: var(--focus-green); }
     .border-focus-green { border-color: var(--focus-green); }
-</style>
+  </style>
 </head>
 <body class="bg-white text-gray-900">
 
@@ -72,15 +69,20 @@
         <a href="#resources" class="hover:text-blue-700">Resources</a>
         <a href="#contact" class="hover:text-blue-700">Contact</a>
       </nav>
-      <button id="hamburger" class="md:hidden border rounded p-2" aria-label="Toggle navigation">☰</button>
+      <button id="hamburger" class="md:hidden border rounded p-2" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu" title="Menu">
+        <!-- Hamburger icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
     </div>
-    <div id="mobile-menu" class="md:hidden border-t bg-white px-6 py-3 space-y-2" aria-label="Mobile">
-      <a href="#home" class="block">Home</a>
-      <a href="#bio" class="block">Bio</a>
-      <a href="#services" class="block">Services</a>
-      <a href="#insights" class="block">Insights</a>
-      <a href="#resources" class="block">Resources</a>
-      <a href="#contact" class="block">Contact</a>
+
+    <!-- Improved Mobile Menu: capped height, tap-to-close links -->
+    <div id="mobile-menu" class="md:hidden absolute left-0 right-0 top-full bg-white border-t px-6 py-3 space-y-3 shadow-lg max-h-[70vh] overflow-auto z-40" aria-label="Mobile">
+      <a href="#home" class="block py-1 mobile-link">Home</a>
+      <a href="#bio" class="block py-1 mobile-link">Bio</a>
+      <a href="#services" class="block py-1 mobile-link">Services</a>
+      <a href="#insights" class="block py-1 mobile-link">Insights</a>
+      <a href="#resources" class="block py-1 mobile-link">Resources</a>
+      <a href="#contact" class="block py-1 mobile-link">Contact</a>
     </div>
   </header>
 
@@ -121,9 +123,16 @@
       I’m also an Associate Professor of Psychology & Neuroscience. Teaching is in my bones — I bring that same clarity and structure to client work:
       set the question, shape the data, choose the right methods, and tell the story plainly.
     </p>
-    <div class="mt-6 flex gap-3">
-      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
-      <a class="px-4 py-2 border rounded" href="https://www.linkedin.com/company/focusiq-io/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
+    <div class="mt-6 flex gap-3 flex-wrap">
+      <a class="px-4 py-2 border rounded inline-flex items-center gap-2" href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">
+        <!-- LinkedIn icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/></svg>
+        LinkedIn (Shannon)
+      </a>
+      <a class="px-4 py-2 border rounded inline-flex items-center gap-2" href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/></svg>
+        LinkedIn (FocusIQ)
+      </a>
     </div>
   </section>
 
@@ -148,16 +157,15 @@
 
     <!-- One-time Services -->
     <h3 class="mt-8 text-lg font-semibold italic md:ml-6">One-Time Services</h3>
-    
     <p class="mt-2 text-gray-700 md:ml-6">Focused engagements for specific questions, analyses, or deliverables. Great for projects with clear scope and defined outcomes.</p>
     <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
       <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Data Checkup — $200/hr</h4>
-        <p class="mt-2 text-sm text-gray-700">A structured first pass to clean and explore your data; flags any issues, look for quick wins, and determine next steps.</p>
+        <p class="mt-2 text-sm text-gray-700">A structured first pass to clean and explore your data; flags any issues, looks for quick wins, and determines next steps.</p>
       </div>
       <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Standard Consulting — $250/hr</h4>
-      <p class="mt-2 text-gray-700 md:ml-6">Targeted analysis and visualization to help clarify complex data and provide clear, actionable insights.</p>
+        <p class="mt-2 text-sm text-gray-700">Targeted analysis and visualization to clarify complex data and provide actionable insights.</p>
       </div>
       <div class="border rounded p-5 shadow-sm">
         <h4 class="font-semibold">Scientific Consulting — $300/hr</h4>
@@ -167,30 +175,29 @@
 
     <!-- Ongoing Services -->
     <h3 class="mt-10 text-lg font-semibold italic md:ml-6">Ongoing Services</h3>
-    
-    <p class="mt-2 text-gray-700 md:ml-6">Consistent support for teams that want ongoing analysis, quick turn feedback, and a thinking partner on call. Preferred rates, billed monthly.</p>
+    <p class="mt-2 text-gray-700 md:ml-6">Consistent support for teams that want ongoing analysis, quick-turn feedback, and a thinking partner on call. Preferred rates, billed monthly.</p>
     <div class="mt-4 md:ml-6 grid md:grid-cols-3 gap-5">
       <div class="border rounded p-5 shadow-sm">
-        <h4 class="font-semibold">Starter Retainer</h4>
-        <p class="mt-2 text-sm text-gray-700">~10 hours/month · Back-pocket support for routine questions, light analysis, and data checks.</p>
+        <h4 class="font-semibold">Starter Retainer — $2,250/mo</h4>
+        <p class="mt-2 text-sm text-gray-700">Up to ~8 hours/month · Back-pocket support for routine questions, light analysis, and data checks.</p>
       </div>
       <div class="border rounded p-5 shadow-sm">
-        <h4 class="font-semibold">Standard Retainer</h4>
-        <p class="mt-2 text-sm text-gray-700">~20 hours/month · Ongoing analyses, reporting cycles, and regular touchpoints.</p>
+        <h4 class="font-semibold">Standard Retainer — $4,400/mo</h4>
+        <p class="mt-2 text-sm text-gray-700">Up to ~20 hours/month · Ongoing analyses, reporting cycles, and regular touchpoints.</p>
       </div>
       <div class="border rounded p-5 shadow-sm">
-        <h4 class="font-semibold">Plus Retainer</h4>
-        <p class="mt-2 text-sm text-gray-700">~40 hours/month · Deeper support across projects: analytics, visualization, and strategy.</p>
+        <h4 class="font-semibold">Plus Retainer — $8,400/mo</h4>
+        <p class="mt-2 text-sm font- italic text-gray-700">Up to ~40 hours/month · Deeper support across projects: analytics, visualization, and strategy.</p>
       </div>
     </div>
 
-    <p class="mt-6 text-sm text-gray-600">Rush projects from $325/hr • Retainers billed monthly • Nonprofit discounts available.</p>
+    <p class="mt-2 text-gray-700 italic md:ml-6">*Rush projects from $325/hr • Retainers billed monthly • Nonprofit discounts available.</p>
   </section>
 
   <!-- Insights from Cognitive Science -->
   <section id="insights" class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold">Insights from Cognitive Science</h2>
-    <p class="mt-4 text-gray-700">Short explainers showing how principles from cognitive science help us understand how people percieve information — and how to design analyses and visuals that maximize clarity and impact.</p>
+    <p class="mt-4 text-gray-700">Short explainers showing how principles from cognitive science help us understand how people perceive information — and how to design analyses and visuals that maximize clarity and impact.</p>
     <div class="mt-6 grid md:grid-cols-2 gap-6">
       <div class="border rounded p-5">
         <h3 class="font-semibold">The Spotlight of Visual Attention</h3>
@@ -223,7 +230,6 @@
       FocusIQ isn’t just about answers — it’s about asking the right questions so your data works harder for you.
     </p>
     <div class="codebox mt-4" aria-label="Fun code snippet">
-    <!--<div class="codebox mt-4 border-focus-green" aria-label="Fun code snippet">-->
 <pre><code># Fun fact
 if is_murky(data):
     insights = FocusIQ(data)
@@ -251,20 +257,37 @@ if is_murky(data):
   <footer class="border-t mt-16">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-gray-600">
       <div>© 2025 FocusIQ, LLC — Built with curiosity and code.</div>
-      <div class="flex gap-4">
-        <a href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer">LinkedIn (Shannon)</a>
-        <a href="https://www.linkedin.com/company/focusiq-io/" target="_blank" rel="noreferrer">LinkedIn (FocusIQ)</a>
-        <a href="mailto:shannon@focusiq.io">shannon@focusiq.io</a>
+      <div class="flex gap-6 items-center">
+        <a href="https://www.linkedin.com/in/ross-sheehy/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/></svg>
+          LinkedIn (Shannon)
+        </a>
+        <a href="https://www.linkedin.com/company/focusiq-llc/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.8c0-1.4-.02-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V23h-4V8.5z"/></svg>
+          LinkedIn (FocusIQ)
+        </a>
+        <a href="mailto:shannon@focusiq.io" class="hover:text-blue-700">shannon@focusiq.io</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu
-    document.getElementById('hamburger').addEventListener('click', function () {
-      document.getElementById('mobile-menu').classList.toggle('active');
-    });
-      </script>
+    // Mobile menu: toggle with capped panel & close on link click
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('mobile-menu');
+      const links = menu.querySelectorAll('.mobile-link');
+      const toggle = () => {
+        const isActive = menu.classList.toggle('active');
+        btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      };
+      btn.addEventListener('click', toggle);
+      links.forEach(a => a.addEventListener('click', () => {
+        if (menu.classList.contains('active')) toggle();
+      }));
+    })();
+  </script>
+
   <script>
     // Handle Formspree submit and force redirect to custom thank-you page
     (function(){
@@ -290,6 +313,5 @@ if is_murky(data):
       });
     })();
   </script>
-  
 </body>
 </html>
